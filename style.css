@@ -1,0 +1,83 @@
+.form-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f7f7f7; /* Lighter background */
+    border-radius: 15px; /* Increased radius for smoother look */
+    box-shadow: 0 0 15px rgba(0,0,0,0.2); /* More pronounced shadow */
+    transition: transform 0.3s ease-in-out; /* Transition for hover effect */
+}
+
+body {
+    background-image: linear-gradient(to right, #007bff, #6c757d)
+}
+
+.form-container:hover {
+    transform: scale(1.01); /* Slight scale on hover */
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+    background-color: #ffffff; /* White background for better contrast */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05); /* Light shadow */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold; /* Bold labels */
+    color: #333; /* Darker text color */
+}
+
+/* Form Actions */
+.form-actions {
+    margin-top: 20px;
+    text-align: center; /* Center buttons */
+}
+
+/* Buttons */
+button[type="submit"], button[type="button"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out; /* Transition for hover effect */
+}
+
+button[type="submit"] {
+    background-color: #007bff; /* Blue submit button */
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+button[type="button"] {
+    background-color: #6c757d; /* Gray button */
+    color: white;
+}
+
+button[type="button"]:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+}
+
+/* Additional Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+button[type="submit"]:focus {
+    animation: pulse 1s infinite;
+}

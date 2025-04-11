@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 20px;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #2980b9;
+            padding-bottom: 5px;
+        }
+
+        .data-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .data-group strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+
+        .data-group span {
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background-color: #ecf0f1;
+            color: #333;
+            word-break: break-word;
+        }
+
+        .password-hidden {
+            font-style: italic;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>User Submitted Information</h2>
+        <div class="data-group">
+            <strong>First Name:</strong>
+            <span id="firstName"></span>
+        </div>
+        <div class="data-group">
+            <strong>Last Name:</strong>
+            <span id="lastName"></span>
+        </div>
+        <div class="data-group">
+            <strong>Date of Birth:</strong>
+            <span id="dob"></span>
+        </div>
+        <div class="data-group">
+            <strong>Gender:</strong>
+            <span id="gender"></span>
+        </div>
+        <div class="data-group">
+            <strong>Country:</strong>
+            <span id="country"></span>
+        </div>
+        <div class="data-group">
+            <strong>Email:</strong>
+            <span id="email"></span>
+        </div>
+        <div class="data-group">
+            <strong>Phone:</strong>
+            <span id="phone"></span>
+        </div>
+        <div class="data-group">
+            <strong>Password:</strong>
+            <span class="password-hidden">[Hidden for security reasons]</span>
+        </div>
+    </div>
+
+    <script>
+        function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return decodeURIComponent(sParameterName[1]) === undefined ? '' : decodeURIComponent(sParameterName[1]);
+                }
+            }
+            return '';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('firstName').innerText = getUrlParameter('firstName');
+            document.getElementById('lastName').innerText = getUrlParameter('lastName');
+            document.getElementById('dob').innerText = getUrlParameter('date') + '/' + getUrlParameter('month') + '/' + getUrlParameter('year');
+            document.getElementById('gender').innerText = getUrlParameter('gender');
+            document.getElementById('country').innerText = getUrlParameter('country');
+            document.getElementById('email').innerText = getUrlParameter('email');
+            document.getElementById('phone').innerText = getUrlParameter('phone');
+        });
+    </script>
+</body>
+</html>

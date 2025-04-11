@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sign Up Form</title>
+    <style>
+    body {
+            font-family: "Century Gothic", sans-serif;
+        }
+
+        .show-password-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .show-password-container input[type="checkbox"] {
+            margin-right: 5px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
+        .show-password-container label {
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Sign Up</h1>
+        <form id="signupForm" action="index2.html" method="GET">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Enter First Name" maxlength="12" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" maxlength="12" required>
+            </div>
+
+            <div class="dob">
+                <label>Date of Birth:</label>
+                <select name="date" required>
+                    <option value="">Date</option>
+                    <script>
+                        for (let i = 1; i <= 31; i++) {
+                            document.write(`<option value="${i}">${i}</option>`);
+                        }
+                    </script>
+                </select>
+
+                <select name="month" required>
+                    <option value="">Month</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+
+                <select name="year" required>
+                    <option value="">Year</option>
+                    <script>
+                        for (let i = 1990; i <= 2025; i++) {
+                            document.write(`<option value="${i}">${i}</option>`);
+                        }
+                    </script>
+                </select>
+            </div>
+
+            <div class="gender">
+                <label>Gender:</label>
+                <label><input type="radio" name="gender" value="male" required> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country" required>
+                    <option value="">Country</option>
+                    <option value="China">China</option>
+                    <option value="Japan">Japan</option>
+                    <option value="South Korea">South Korea</option>
+                    <option value="Mongolia">Mongolia</option>
+                    <option value="Philippines">Philippines</option>
+                    <option value="Thailand">Thailand</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Vietnam">Vietnam</option>
+                    <option value="India">India</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Sri Lanka">Sri Lanka</option>
+                    <option value="Kazakhstan">Kazakhstan</option>
+                    <option value="Uzbekistan">Uzbekistan</option>
+                    <option value="Turkmenistan">Turkmenistan</option>
+                    <option value="Kyrgyzstan">Kyrgyzstan</option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="UAE">UAE</option>
+                    <option value="Iran">Iran</option>
+                    <option value="Turkey">Turkey</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter E-mail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter Phone" pattern="\d{11}" maxlength="11" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" minlength="8" required>
+                 <div class="show-password-container">
+                    <input type="checkbox" id="showPassword">
+                    <label for="showPassword">Show Password</label>
+                </div>
+                <div id="passwordError" style="color: red;"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" minlength="8" required>
+                <div class="show-password-container">
+                    <input type="checkbox" id="showConfirmPassword">
+                    <label for="showConfirmPassword">Show Confirm Password</label>
+                </div>
+                <div id="passwordError" style="color: red;"></div>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="terms" required> I Agree to the Terms of use
+                </label>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit">Submit</button>
+                <button type="button" onclick="window.location.reload();">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+   document.addEventListener('DOMContentLoaded', function () {
+        const firstNameField = document.getElementById('firstName');
+        const lastNameField = document.getElementById('lastName');
+        const phoneField = document.getElementById('phone');
+
+        function restrictToAlphabetsAndSpaces(event) {
+            const regex = /^[A-Za-z\s]+$/;
+            if (!regex.test(event.key)) {
+                event.preventDefault(); 
+            }
+        }
+
+         function restrictToAlphabets(event) {
+            const regex = /^[A-Za-z\s]+$/;
+            if (!regex.test(event.key)) {
+                event.preventDefault(); 
+            }
+        }
+
+         function restrictToNumbers(event) {
+            const regex = /^[0-9]+$/;
+            if (!regex.test(event.key)) {
+                event.preventDefault();
+            }
+        }
+
+        firstNameField.addEventListener('keypress', restrictToAlphabetsAndSpaces);
+        lastNameField.addEventListener('keypress', restrictToAlphabets);
+         phoneField.addEventListener('keypress', restrictToNumbers);
+    });
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const passwordError = document.getElementById('passwordError');
+
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/;
+
+            
+            if (password !== confirmPassword) {
+                passwordError.innerText = 'Passwords do not match';
+                event.preventDefault();
+                return;
+            }
+
+            // Check if password meets complexity requirements
+            if (!passwordPattern.test(password)) {
+                passwordError.innerText = 'Password must be 8–12 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.';
+                event.preventDefault();
+                return;
+            }
+
+            
+            passwordError.innerText = '';
+        });
+
+        document.getElementById('password').addEventListener('input', validatePasswords);
+        document.getElementById('confirmPassword').addEventListener('input', validatePasswords);
+
+        function validatePasswords() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const passwordError = document.getElementById('passwordError');
+
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/;
+
+            if (password !== confirmPassword) {
+                passwordError.innerText = 'Passwords do not match';
+            } else if (!passwordPattern.test(password)) {
+                passwordError.innerText = 'Password must be 8–12 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.';
+            } else {
+                passwordError.innerText = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const phoneField = document.getElementById('phone');
+
+    function restrictToNumbers(event) {
+        const regex = /^[0-9]+$/;
+        if (!regex.test(event.key)) {
+            event.preventDefault();
+        }
+    }
+
+    phoneField.addEventListener('keypress', restrictToNumbers);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const showPasswordCheckbox = document.getElementById('showPassword');
+    const showConfirmPasswordCheckbox = document.getElementById('showConfirmPassword');
+
+    if (showPasswordCheckbox) {
+        showPasswordCheckbox.addEventListener('change', function () {
+            const passwordField = document.getElementById('password');
+            if (passwordField) {
+                passwordField.type = this.checked ? 'text' : 'password';
+            }
+        });
+    }
+
+    if (showConfirmPasswordCheckbox) {
+        showConfirmPasswordCheckbox.addEventListener('change', function () {
+            const confirmPasswordField = document.getElementById('confirmPassword');
+            if (confirmPasswordField) {
+                confirmPasswordField.type = this.checked ? 'text' : 'password';
+            }
+        });
+    }
+});
+    </script>
+</body>
+</html>
